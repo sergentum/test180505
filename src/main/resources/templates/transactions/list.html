@@ -1,0 +1,46 @@
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:fragment="content">
+
+    <table class="table table-striped" id="posts_list">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <!--<th>From account</th>-->
+            <th>Note</th>
+            <th>ID</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="transaction : ${transactions}">
+            <td class="datetime" data-th-text="${#dates.format(transaction.datetimeH, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
+            <!--<td class="note" data-th-text="${accounts.findOne(1)}"></td>-->
+
+            <td class="note" data-th-text="${transaction.note}"></td>
+
+            <td class="to_account_id" data-th-text="${transaction.id}"></td>
+
+            <td>
+                <a th:href="@{'/transactions/{id}/edit'(id=${transaction.id})}" class="edit" th:attr="name=${transaction.note}">
+                    <span class="fa-stack">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </span>
+
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{'/transactions/{id}/delete'(id=${transaction.id})}" class="delete" th:attr="name=${transaction.note}">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</html>

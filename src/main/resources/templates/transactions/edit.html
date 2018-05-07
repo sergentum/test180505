@@ -1,0 +1,44 @@
+<html layout:decorator="layout" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+    <div layout:fragment="content">
+        <form method="post" name="comment_form" id="comment_form" action="/transactions/update" role="form">
+            <table class="table table-striped" id="posts_list">
+
+                <tbody>
+                <div class="form-group">
+
+
+                    <tr>
+                        <th>
+                            <label for="note">Note</label>
+                        </th>
+                        <th>
+                            <textarea rows="1" class="form-control" id="note" name="note" th:text="${transaction.note}"/>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <label for="datetimeH">Date</label>
+                        </th>
+                        <th>
+                            <input type="date" class="form-control" id="datetimeH" th:field="${transaction.datetimeH}"/>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <label for="time">Time</label>
+                        </th>
+                        <th>
+                            <input type="time" class="form-control" id="time" th:field="${transaction.time}"/>
+                        </th>
+                    </tr>
+                </div>
+                </tbody>
+            </table>
+
+            <input type="hidden" class="form-control" id="transaction_id" name="transaction_id" th:value="${transaction.id}"/>
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</html>
